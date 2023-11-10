@@ -1,0 +1,16 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: label.${panda_name}-auth
+  namespace: ${panda_name}
+spec:
+  selector:
+    matchLabels:
+      app: label.${panda_name}
+  action: CUSTOM
+  provider:
+    name: opa.${provider_name}
+  rules:
+  - to:
+    - operation:
+        notPaths: ["/healthz"] 

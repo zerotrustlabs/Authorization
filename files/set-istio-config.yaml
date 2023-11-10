@@ -1,0 +1,4 @@
+    - name: opa.${name}
+      envoyExtAuthzGrpc:
+        service: opa.${panda_name}.svc.cluster.local
+        port: 9191
